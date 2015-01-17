@@ -21,7 +21,7 @@ module.exports = function(passport){
 
 
 
-	/* Handle Login POST 
+	/* Handle Login POST
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
 		failureRedirect: '/',
@@ -47,11 +47,13 @@ module.exports = function(passport){
 
 
 	router.post('/testpost', function(req, res){
-	//console.log(req.params.hello);
-		var number = req.param('hello');
-		console.log("value of number: " + number);
-		res.send(number);
-	});
+	'use strict';
+    console.log(req.body);
+    console.log("user: " + req.param('user'));
+    console.log("title: " + req.param('title'));
+    console.log("url: " + req.param('url'));
+    res.send("hey");
+});
 
 
 
@@ -61,7 +63,7 @@ module.exports = function(passport){
 	});
 
 
-	/* Handle Registration POST 
+	/* Handle Registration POST
 	router.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/home',
 		failureRedirect: '/signup',
