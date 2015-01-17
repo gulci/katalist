@@ -1,4 +1,4 @@
-var ref = new Firebase("https://bookmarks-nice.firebaseio.com/");
+var ref = new Firebase("https://katalist.firebaseio.com");
 
 var inds = [];
 
