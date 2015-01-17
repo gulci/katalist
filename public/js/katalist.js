@@ -1,4 +1,4 @@
-var ref = new Firebase("https://katalist.firebaseio.com");
+var ref = new Firebase("https://bookmarks-nice.firebaseio.com/");
 
 var inds = [];
 
@@ -11,7 +11,6 @@ ref.on("value", function(snapshot) {
 			html += "<h4><a href='" + obj[ind].url + "' target='_blank'>" + obj[ind].url + "</a></h4>";
 			html += "<button class='upvote btn btn-default' type='button'><span class='glyphicon glyphicon-chevron-up'></span> "+obj[ind].numVotes+"</button>";
 			html += "</div>";
-			// console.log(html);
 			$("#post_container").prepend(html);
 			$("#item-"+ind).slideDown("fast");
 			inds.push(ind);
