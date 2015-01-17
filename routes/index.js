@@ -1,3 +1,4 @@
+var data = require('../models/data');
 var express = require('express');
 var router = express.Router();
 
@@ -56,7 +57,24 @@ module.exports = function(passport){
     console.log("user: " + req.param('user'));
     console.log("title: " + req.param('title'));
     console.log("url: " + req.param('url'));
-    res.send("hey");
+    var newdata = new data();
+                  // set the user's local credentials
+                        newdata.id = req.param('title');
+                        newdata.url = req.param('url');
+                        newdata.title = req.param('title');
+                        newdata.owner = req.param('user');
+
+                        // save the user
+                        newdata.save(function(err) {
+                            if (err){
+                                console.log('Error in Saving bookmarks: '+err);  
+                                throw err;  
+                            }
+                            console.log('bookmark save succesful');    
+                            //return done(null, newdata);
+   
+                          });
+    res.send("post is now working");
 });
 
 	/* GET Registration Page */
