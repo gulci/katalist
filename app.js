@@ -36,8 +36,8 @@ app.use(function(req, res, next) {
   next();
 });
 
- // Using the flash middleware provided by connect-flash to store messages in session
- // and displaying in templates
+// Using the flash middleware provided by connect-flash to store messages in session
+// and displaying in templates
 var flash = require('connect-flash');
 app.use(flash());
 
@@ -51,14 +51,14 @@ app.use('/', routes);
 
 
 app.post('/tasks', function (request, response) {
-    var task = request.body;
-    taskRepository.save({
-        title: task.title || 'Default title',
-        description: task.description || 'Default description',
-        dueDate: task.dueDate,
-        status: task.status || 'not completed'
-    });
-    response.send(200);
+  var task = request.body;
+  taskRepository.save({
+    title: task.title || 'Default title',
+    description: task.description || 'Default description',
+    dueDate: task.dueDate,
+    status: task.status || 'not completed'
+  });
+  response.send(200);
 });
 
 
@@ -70,21 +70,21 @@ require("./api/api")(app);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 module.exports = app;
