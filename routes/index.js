@@ -25,12 +25,24 @@ module.exports = function(passport){
 		res.render('login', { message: req.flash('message') });
 	});
 
-	/* Handle Login POST */
+	/* Handle Login POST
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
 		failureRedirect: '/',
 		failureFlash : true
-	}));
+	}));*/
+
+	/* Handle Login POST */
+	router.post("/login", function(req, res, next) {
+		passport.authenticate("login", function(err, user, info) {
+			console.log("LE USER INFO");
+			console.dir(user);
+			req.logIn(user, function(err2) {
+				if (err2) { return res.redirect("/"); }
+				return res.redirect("/home");
+			});
+		})(req, res, next);
+	});
 
 	router.get('/ext', function(req, res) {
     	// Display the Login page with any flash message, if any
@@ -39,23 +51,39 @@ module.exports = function(passport){
 
 
 	router.post('/testpost', function(req, res){
-	//console.log(req.params.hello);
-		var number = req.param('hello');
-		console.log("value of number: " + number);
-		res.send(number);
-	});
+	'use strict';
+    console.log(req.body);
+    console.log("user: " + req.param('user'));
+    console.log("title: " + req.param('title'));
+    console.log("url: " + req.param('url'));
+    res.send("hey");
+});
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
 		res.render('signup',{message: req.flash('message')});
 	});
 
-	/* Handle Registration POST */
+
+	/* Handle Registration POST
 	router.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/home',
 		failureRedirect: '/signup',
 		failureFlash : true
-	}));
+	}, function(err, user, info) {
+		console.dir(err);
+		console.dir(user);
+		console.dir(info);
+	}));*/
+
+	/* Handle Registration POST */
+	router.post("/signup", function(req, res, next) {
+		passport.authenticate("signup", function(err, user, info) {
+			console.dir(err);
+			console.dir(user);
+			console.dir(info);
+		})(req, res, next);
+	});
 
 	// Handle logout
 	router.get('/logout', function(req, res){
