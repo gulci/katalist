@@ -21,12 +21,24 @@ module.exports = function(passport){
 
 
 
-	/* Handle Login POST */
+	/* Handle Login POST 
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
 		failureRedirect: '/',
 		failureFlash : true
-	}));
+	}));*/
+
+	/* Handle Login POST */
+	router.post("/login", function(req, res, next) {
+		passport.authenticate("login", function(err, user, info) {
+			console.log("LE USER INFO");
+			console.dir(user);
+			req.logIn(user, function(err2) {
+				if (err2) { return res.redirect("/"); }
+				return res.redirect("/home");
+			});
+		})(req, res, next);
+	});
 
 	router.get('/ext', function(req, res) {
     	// Display the Login page with any flash message, if any
@@ -48,12 +60,26 @@ module.exports = function(passport){
 		res.render('register',{message: req.flash('message')});
 	});
 
-	/* Handle Registration POST */
+
+	/* Handle Registration POST 
 	router.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/home',
 		failureRedirect: '/signup',
 		failureFlash : true
-	}));
+	}, function(err, user, info) {
+		console.dir(err);
+		console.dir(user);
+		console.dir(info);
+	}));*/
+
+	/* Handle Registration POST */
+	router.post("/signup", function(req, res, next) {
+		passport.authenticate("signup", function(err, user, info) {
+			console.dir(err);
+			console.dir(user);
+			console.dir(info);
+		})(req, res, next);
+	});
 
 	// Handle logout
 	router.get('/logout', function(req, res){
