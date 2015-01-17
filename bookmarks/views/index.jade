@@ -1,0 +1,89 @@
+extends layout
+
+block content
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='/images/favicon.ico')
+    style.
+      body {
+      background-image: url("/images/wall.jpg");
+      background-color: #cccccc;
+      }
+      .other-color{
+      background: green
+      }
+    title Signin Template for Bootstrap
+    // Bootstrap core CSS
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    // Custom styles for this template
+    link(href='/stylesheets/signin.css', rel='stylesheet')
+  body
+    .container(<div='')
+      .jumbotron.responsive.other-color.visible-lg.visible-md(align='center')
+        form.form-signin(action='/login', method='POST')
+          h1.fancy.form-signin-heading bookShare
+          h3.fancy.form-signin-heading Please sign in
+          label.sr-only(for='inputUsername') Enter Username
+          input#userInput.form-control(type='text', name='username', placeholder='Username', required='', autofocus='')
+          label.sr-only(for='inputPassword') Password
+          input#inputPassword.form-control(type='password', name='password', placeholder='Password', required='')
+          .checkbox
+            label
+              input(type='checkbox', value='remember-me')
+              |  Remember me
+          button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+        center
+          a.text-center.new-account(align='center', href='/signup') Create an account
+          #message
+          h3.text-center.lowerc.fancy
+            font(color='red')
+    .jumbotron.responsive.other-color1.visible-sm.visible-xs(align='center')
+      .container(<div='')
+        form.form-signin(action='/login', method='POST')
+          h1.fancy.form-signin-heading bookShare
+          h3.fancy.form-signin-heading Please sign in
+          label.sr-only(for='inputUsername') Enter Username
+          input#userInput.form-control(type='text', name='username', placeholder='Username', required='', autofocus='')
+          label.sr-only(for='inputPassword') Password
+          input#inputPassword.form-control(type='password', name='password', placeholder='Password', required='')
+          .checkbox
+            label
+              input(type='checkbox', value='remember-me')
+              |  Remember me
+          button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+        center
+          a.text-center.new-account(align='center', href='/signup') Create an account
+          #message
+          h3.text-center.lowerc.fancy
+            font(color='red')
+    // /jumbotron
+    style.
+      body {
+      background-image: url("/images/wall.jpg");
+      background-color: #cccccc;
+      }
+      .fancy {
+      font-family: Dosis-Light;
+      }
+      .other-color{
+      background: #grey;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      }
+      .other-color1{
+      background: #grey;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      }
+      @font-face {
+      font-family: Dosis-Light;
+      src: url(/fonts/Dosis.ttf);
+      .lowerc {
+      }
+      }
