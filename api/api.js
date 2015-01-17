@@ -5,8 +5,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post("/api/submit", function(req, res) {
-		var userKey = req.param("user");
+	app.post("/api/login", function(req, res) {
 		
 	});
 };

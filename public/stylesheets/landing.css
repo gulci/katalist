@@ -12,8 +12,11 @@ body {
   max-width: 700px;
 }
 
+.upvote-container {
+  text-align: right;
+}
+
 .card .upvote {
   color:06FF6F;
-  float:right;
   display:inline-block;
 }
