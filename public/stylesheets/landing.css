@@ -1,15 +1,19 @@
 .form-signin input {
   margin-bottom: 3px;
 }
-#upvote {
-  color:#06FF6F;
+
+body {
+  padding-top: 60px;
 }
+
 
 #feed-container {
   margin: 0 auto;
   max-width: 700px;
 }
 
-body {
-  padding-top: 60px;
+.card .upvote {
+  color:06FF6F;
+  float:right;
+  display:inline-block;
 }
