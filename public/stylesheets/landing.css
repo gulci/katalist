@@ -1,6 +1,16 @@
 .form-signin input {
   margin-bottom: 3px;
 }
+.form-signin .form-control {
+position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+}
 
 body {
   padding-top: 60px;
