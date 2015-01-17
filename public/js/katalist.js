@@ -14,17 +14,19 @@ ref.on("value", function(snapshot) {
       $("#post_container").prepend(html);
       $("#item" + ind).slideDown("fast");
       inds.push(ind);
+
+      $(".upvote").click(function() {
+        console.log("called");
+        var postId = $(this).parent().parent().attr('id').substring(4);
+        $(this).text(parseInt($(this).text()) + 1);
+        console.log(postId);
+        ref.child(postId + "/post/numVotes").once("value", function(current) {
+          new Firebase('https://bookmarks-nice.firebaseio.com/'+postId+'/post').update({numVotes:+current.val()+1},function(){console.log("gud")});
+        });
+      });
+
     }
   }
-
-  $(".upvote").click(function() {
-    console.log("called");
-    var postId = $(this).parent().parent().attr('id').substring(4);
-    console.log(postId);
-    ref.child(postId + "/post/numVotes").once("value", function(current) {
-      new Firebase('https://bookmarks-nice.firebaseio.com/'+postId+'/post').update({numVotes:+current.val()+1},function(){console.log("gud")});
-    });
-  });
 
   console.dir(inds);
 }, function(errorObject) {
