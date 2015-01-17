@@ -1,9 +1,8 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background-color: #fff;
 }
-
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -23,7 +22,4 @@ body {
 }
 .form-signin .form-control:focus {
   z-index: 2;
-}
-.form-signin input {
-  margin-bottom: 3px;
 }

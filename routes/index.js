@@ -26,17 +26,10 @@ module.exports = function(passport){
 		res.render('login', { message: req.flash('message') });
 	});
 
-	/* Handle Login POST
-	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home',
-		failureRedirect: '/',
-		failureFlash : true
-	}));*/
 
 	/* Handle Login POST */
 	router.post("/login", function(req, res, next) {
 		passport.authenticate("login", function(err, user, info) {
-			console.log("LE USER INFO");
 			console.dir(user);
 			req.logIn(user, function(err2) {
 				if (err2) { return res.redirect("/"); }
@@ -51,48 +44,10 @@ module.exports = function(passport){
 	});
 
 
-	router.post('/testpost', function(req, res){
-	'use strict';
-    console.log(req.body);
-    console.log("user: " + req.param('user'));
-    console.log("title: " + req.param('title'));
-    console.log("url: " + req.param('url'));
-    var newdata = new data();
-                  // set the user's local credentials
-                        newdata.id = req.param('title');
-                        newdata.url = req.param('url');
-                        newdata.title = req.param('title');
-                        newdata.owner = req.param('user');
-
-                        // save the user
-                        newdata.save(function(err) {
-                            if (err){
-                                console.log('Error in Saving bookmarks: '+err);  
-                                throw err;  
-                            }
-                            console.log('bookmark save succesful');    
-                            //return done(null, newdata);
-   
-                          });
-    res.send("post is now working");
-});
-
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
 		res.render('signup',{message: req.flash('message')});
 	});
-
-
-	/* Handle Registration POST
-	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
-		failureRedirect: '/signup',
-		failureFlash : true
-	}, function(err, user, info) {
-		console.dir(err);
-		console.dir(user);
-		console.dir(info);
-	}));*/
 
 	/* Handle Registration POST */
 	router.post("/signup", function(req, res, next) {
@@ -106,7 +61,7 @@ module.exports = function(passport){
 	// Handle logout
 	router.get('/logout', function(req, res){
 		  req.logout();
-		    res.redirect('/');
+		  res.redirect('/');
 	});
 
 	/* GET Home Page */
