@@ -13,13 +13,17 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-	/* GET login page. */
+	/* GET landing page. */
 	router.get('/', function(req, res) {
     	// Display the Login page with any flash message, if any
-		res.render('signin', { message: req.flash('message') });
+		res.render('landing', { message: req.flash('message') });
 	});
 
-
+	/* GET login page */
+	router.get('/login', function(req, res) {
+	// Display the Login page with any flash message, if any
+		res.render('login', { message: req.flash('message') });
+	});
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
@@ -41,11 +45,9 @@ module.exports = function(passport){
 		res.send(number);
 	});
 
-
-
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
-		res.render('register',{message: req.flash('message')});
+		res.render('signup',{message: req.flash('message')});
 	});
 
 	/* Handle Registration POST */
